@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.m6.pruebas.DB.PokemonDBHelper
 import com.m6.pruebas.Pokemon
 import com.m6.pruebas.R
+import com.m6.pruebas.fragments.DetailFragment
 
 class RecyclerViewAdapter(llistat: MutableList<Pokemon>, dbH: PokemonDBHelper, context: Context?): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     var llistat: MutableList<Pokemon> = llistat;
@@ -26,9 +28,10 @@ class RecyclerViewAdapter(llistat: MutableList<Pokemon>, dbH: PokemonDBHelper, c
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.txtNom.setText(llistat.get(position).getName());
-        holder.txtType1.setText((llistat.get(position).getType1()))
-        holder.txtType2.setText((llistat.get(position).getType2()))
+        val posicion = position
+        holder.txtNom.setText(llistat.get(posicion).getName());
+        holder.txtType1.setText((llistat.get(posicion).getType1()))
+        holder.txtType2.setText((llistat.get(posicion).getType2()))
         holder.deleteButton.setOnClickListener{
             val builder = AlertDialog.Builder(this.context)
             builder.setMessage("Confirmar el borrado de datos")
@@ -45,6 +48,14 @@ class RecyclerViewAdapter(llistat: MutableList<Pokemon>, dbH: PokemonDBHelper, c
             //Crea el cuadro de dialog
             builder.create().show()
         }
+        //Carga un fragment con mas información
+        holder.itemView.setOnClickListener(object:View.OnClickListener{
+            override fun onClick(v: View?) {
+                val activity = v!!.context as AppCompatActivity
+                activity.supportFragmentManager.beginTransaction().replace(R.id.fragment_container, DetailFragment(llistat[posicion])).commit();
+            }
+        })
+
     }
 
     override fun getItemCount(): Int {
