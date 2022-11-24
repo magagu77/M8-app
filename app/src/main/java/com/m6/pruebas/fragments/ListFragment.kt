@@ -26,7 +26,7 @@ class ListFragment(dbH: PokemonDBHelper) : Fragment() {
 
         val recycler: RecyclerView = v.findViewById(R.id.recyclerList);
         recycler.layoutManager = LinearLayoutManager(context)
-        val mAdapter : RecyclerViewAdapter = RecyclerViewAdapter(lista, context);
+        val mAdapter : RecyclerViewAdapter = RecyclerViewAdapter(lista,dbHelper, context);
 
         recycler.adapter = mAdapter
         return v;

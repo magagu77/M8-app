@@ -42,6 +42,10 @@ class PokemonDBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NA
         val db = this.writableDatabase
         db.execSQL(DELETE)
     }
+    fun deletePokemon(name:String){
+        val db = this.writableDatabase
+        db.execSQL(("DELETE FROM POKEMON WHERE PK_NOMBRE = '${name}'"))
+    }
     fun selectPokemon() :MutableList<Pokemon>{
         var lista:MutableList<Pokemon> = ArrayList()
         val select:Array<String> = arrayOf("PK_ID","PK_NOMBRE","PK_TIPO1","PK_TIPO2")

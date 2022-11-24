@@ -53,7 +53,7 @@ class FormFragment(dbH: PokemonDBHelper) : Fragment() {
                     DialogInterface.OnClickListener { dialog, id ->
                         // No se borra la base de datos y cierra el dialog
                     })
-// Create the AlertDialog object and return it
+            //Crea el cuadro de dialog
             builder.create().show()
 
         }
