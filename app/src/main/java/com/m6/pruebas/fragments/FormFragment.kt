@@ -1,5 +1,7 @@
 package com.m6.pruebas.fragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,8 +41,21 @@ class FormFragment(dbH: PokemonDBHelper) : Fragment() {
         }
 
         buttonDelete.setOnClickListener{
-            dbHelper.deleteTable()
-            Toast.makeText(context, "Data has been deleted", LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this.context)
+            builder.setMessage("Confirmar el borrado de datos")
+                .setPositiveButton("OK",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // Borrar datos
+                        dbHelper.deleteTable()
+                        Toast.makeText(context, "Data has been deleted", LENGTH_SHORT).show()
+                    })
+                .setNegativeButton("Cancel",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // No se borra la base de datos y cierra el dialog
+                    })
+// Create the AlertDialog object and return it
+            builder.create().show()
+
         }
         return view;
     }
