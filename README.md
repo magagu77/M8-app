@@ -1,4 +1,2 @@
-# M8-app
-Marc Garcia Android app
 # App M8
-## Aplicacion Pokemons
+Aplicacion de android hecha con kotlin que permite guardar informacion de pokemons 
