@@ -26,7 +26,7 @@ class BottomNavigation : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener { item: MenuItem ->
 
             when (item.itemId) {
-                R.id.nav_home -> {
+                R.id.toolbar_settings -> {
                     loadFragment(FormFragment(dbHelper))
                     true
                 }
