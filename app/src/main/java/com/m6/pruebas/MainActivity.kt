@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             if (userName.equals("admin") && password.equals("admin")){
                 Log.i("testMarc", "Login correcte" + userName)
                 editor.clear().commit();
+                //Guarda nombre de usuario y contraseña en caso de estar marcado el checkbox
                 if(remember.isChecked()) {
                     editor.putString("user", userName);
                     editor.putString("password", password)

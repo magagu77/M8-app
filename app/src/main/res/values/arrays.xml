@@ -1,0 +1,12 @@
+<resources>
+    <!-- Lenguage Preference -->
+    <string-array name="lenguages_entries">
+        <item>English</item>
+        <item>Español</item>
+    </string-array>
+
+    <string-array name="lenguages_values">
+        <item>strings.xml</item>
+        <item>strings.xml</item>
+    </string-array>
+</resources>
